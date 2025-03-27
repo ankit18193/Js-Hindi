@@ -1,0 +1,94 @@
+## **JavaScript Execution Context (Detailed Notes)**  
+
+### **🔹 What is Execution Context?**  
+Execution Context is the **environment** where JavaScript code is executed. It determines how functions and variables are stored and accessed.  
+
+---
+
+## **🔹 Types of Execution Context**  
+1️⃣ **Global Execution Context (GEC)**  
+   - Default execution context.  
+   - Created when JavaScript starts execution.  
+   - `this` in GEC refers to the **global object** (`window` in browsers, `global` in Node.js).  
+
+2️⃣ **Function Execution Context (FEC)**  
+   - Created whenever a function is called.  
+   - Each function has its own execution context.  
+   - A function's execution context is removed after execution is complete.  
+
+3️⃣ **Eval Execution Context**  
+   - Created when code is executed inside `eval()`.  
+   - Not commonly used in modern JavaScript.  
+
+---
+
+## **🔹 Execution Context Lifecycle**  
+Every execution context goes through **three phases**:  
+
+### **1️⃣ Creation Phase (Memory Creation)**
+- Happens **before** execution starts.  
+- JavaScript creates the **Global Execution Context** first.  
+- **Function and Variable Hoisting Occurs:**
+  - Functions are stored in memory **with their definitions**.
+  - Variables are set to **`undefined`** (if declared with `var`).  
+
+👉 Example:  
+```js
+console.log(name); // undefined
+var name = "John";
+
+greet(); // "Hello!"
+function greet() {
+    console.log("Hello!");
+}
+```
+**Explanation:**  
+- `greet()` is stored **fully** in memory.  
+- `name` is stored as **`undefined`** initially (hoisting).  
+
+---
+
+### **2️⃣ Execution Phase (Code Execution)**
+- JavaScript **executes** the code line by line.  
+- Values are assigned to variables.  
+- Functions are executed if called.  
+
+👉 Example:  
+```js
+var name = "John";
+console.log(name); // "John"
+```
+Now, `name` is assigned `"John"` and printed.  
+
+---
+
+### **3️⃣ Deletion Phase (Cleanup)**
+- Once execution is completed, the function's execution context is **deleted** from the stack.  
+- Global Execution Context **remains until the program finishes**.  
+
+---
+
+## **🔹 Execution Stack (Call Stack)**
+JavaScript follows a **stack-based model** for execution:  
+- The **Global Execution Context (GEC)** is pushed first.  
+- When a function is called, a **Function Execution Context (FEC)** is pushed on top.  
+- After function execution, its context is **popped off**.  
+
+👉 Example:  
+```js
+function first() {
+    console.log("First function");
+    second();
+}
+function second() {
+    console.log("Second function");
+}
+first();
+console.log("End");
+```
+**Execution Order in Call Stack:**  
+1️⃣ GEC (`first()` is called)  
+2️⃣ `first()` execution context is pushed  
+3️⃣ Inside `first()`, `second()` is called → **New context created**  
+4️⃣ `second()` completes → Its context is popped  
+5️⃣ `first()` completes → Its context is popped  
