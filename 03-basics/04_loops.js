@@ -33,3 +33,38 @@ for (const key in myArr) {
     
     
 }
+
+// using Filter Function 
+
+const nums=[1,2,3,4,5,6,7,8,9]
+let newNums=nums.filter( (num)=> {
+    return num>4
+})
+
+console.log(newNums);
+
+// doing same using foor each loop
+
+let newnumArr=[1,2,3,4,5,6,7,8,9]
+let numArr=[]
+newnumArr.forEach( (num)=> {
+    if(num<5){
+        numArr.push(num)
+    }
+})
+
+console.log(numArr);
+ 
+let myArray=[34,6,5,7,6,8,9,5]
+
+myArray.forEach( (num,index,arr)=>{
+     arr[index]=num+10;
+
+});
+
+console.log(myArray);
+
+let b=[3,2,4,6,5,7,67]
+let c=b.map((num)=>num+10)
+console.log(c);
+
