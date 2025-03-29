@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model -02</title>
+</head>
+<body style="background-color: black;color: white;">
+    
+</body>
+<script>
+    const div= document.createElement('div');
+    console.log(div);
+    div.className="myclass"
+    div.id="myID"
+    div.setAttribute("title","generate title")
+    // yaha ek attribute jo title h jika naam "generate title" h
+   div.innerText="hello, welcome to my web-page"
+   document.body.appendChild(div);
+
+   div.style.backgroundColor="green";
+   const lineBreak=document.createElement("br")
+   div.appendChild(lineBreak);
+
+   let mytext=document.createTextNode("learnig basics of javaScript");
+
+   div.appendChild(mytext);// yaha maine my text ko div me dala 
+   document.body.appendChild(div);// but yaha maine div ko document ke body me dala ,bass yahi difference h 
+
+
+
+
+
+
+</script>
+</html>
