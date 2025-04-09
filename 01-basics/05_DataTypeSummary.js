@@ -10,7 +10,7 @@ let name="ankit"// String
 console.log(typeof name);
 
 let num=1234 // Number
-console.log(typeof num);
+console.log(typeof num);x
 
 let isLoggedIn=true //Boolean
 console.log(typeof isLoggedIn);
