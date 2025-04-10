@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        li{
+            height: 200px;
+            width: 200px;
+            border: 2px solid rgb(247, 247, 1);
+            margin: 5px;
+            padding: 10px;
+            list-style-type: none;
+            color:rgb(255, 251, 0)
+
+        }
+        ul{
+            display: flex;
+        }
+    </style>
+</head>
+<body style="background-color: #414141;">
+    <div>
+        <ul id="box">
+            <li id="l1">box1</li>
+            <li id="l2">box2
+                <a href="google.com" >google</a>
+            </li>
+            <li id="l3">box3</li>
+            <li id="l4">box4</li>
+        </ul>
+    </div>
+    
+</body>
+
+<script>
+
+    // document.querySelector('li').addEventListener('click',function(e){
+     
+    //      console.log(e)
+    // },false)
+
+// yaha ek problem h jb query selector ka use kr rhe h tb li sirf ek element ko select kr rha h toh box one pr hi apply ho rha h 
+
+    // document.querySelectorAll('li').addEventListener('click',function(e){
+     
+    //      console.log(e)
+    // },false)
+    // yaha ek error h kyu ki jab hm query selector All ka use krte h tb hme ek node list milta h  toh event saare element kr apply nhi ho rha h 
+    // jo ki ek roor h 
+    //  toh isko resolve krne ke liye hm for each loop ka use krenge 
+
+
+// document.querySelectorAll('li').forEach(function(li){
+//     li.addEventListener('click',function(e){
+//         console.log(e);
+        
+//     },false);
+    
+// })
+
+// yaha pr querry selector use kr ke hmne ek li ki node list nikal li phir uske uper for each loop lga kr saare element pr apply kr diya 
+
+
+// ************* EVENT PROPAGATION ***************
+
+// 1=> Bubbling Up
+
+
+// document.querySelector('ul').addEventListener('click',function(e){
+//     console.log(`clicked on the UL`);
+    
+// },false);
+//     document.querySelector('#l1').addEventListener('click',function(e){
+        
+//         console.log(`clicked on box 1`);
+        
+//     },false);
+
+// ************** Capturing Event ******************
+
+    document.querySelector('#box').addEventListener('click',function(e){
+        console.log(`clicked in the boxes`);
+        
+    },true);
+    document.querySelector('#l4').addEventListener('click',function(e){
+        console.log(`clicked in the B4`);
+        // e.stopPropagation()
+        
+    },true);
+
+    document.querySelector('#l2').addEventListener('click',function(e){
+        e.preventDefault()// ye kya krega,jb google click kro toh google na khul kr jo tum chahoge wo ho ga
+        e.stopPropagation()// ye bubbling up hone se prevent krega 
+        
+        console.log("google click")
+    },false)
+
+//  yaha  stopPropagation work nhin krega kyu ki ye capture phase me h 
+// ye sirf bubble phase me kaam krta h 
+
+
+    
+</script>
+</html>

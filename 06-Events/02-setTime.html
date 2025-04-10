@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetTimeOUt & SetInterval</title>
+</head>
+<body>
+    <h1>hello world </h1>
+    <h1>
+        welcome
+    </h1>
+    <button id="stop">stop</button>
+    
+</body>
+<script>
+    setTimeout(() => {
+        console.log(`chotu`)  
+    },2000);
+    
+    let callChotu=function(){
+        console.log(`this is working `);
+        
+    }
+
+    setTimeout(callChotu,1000)
+
+    let changeHead=function(){
+        
+        document.querySelectorAll('h1').forEach(function(h1) {
+            h1.innerHTML = "hii";
+        })
+    }
+    let clear=setTimeout(changeHead,3000)
+    document.querySelector('#stop').addEventListener('click',function(e){
+        console.log("stopped");
+        
+        clearTimeout(clear)
+        
+
+    })
+
+    
+
+
+</script>
+</html>
