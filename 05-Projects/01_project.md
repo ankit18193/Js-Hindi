@@ -192,3 +192,68 @@ function newGame(){
 }
 
 ```
+## project 5
+### keyboard values
+``` javaScript
+let insert = document.querySelector('#insert');
+
+
+window.addEventListener('keydown',(e)=>{
+  insert.innerHTML=`
+  <div class="key">
+  <table>
+  <tr>
+    <th>key</th>
+    <th>keycode</th>
+    <th>code</th>
+  </tr>
+  <tr>
+    <td>${e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+  
+</table>
+  </div>
+  
+  `
+})
+
+
+
+
+
+```
+
+## project 6
+### stop color start color
+``` javaScript
+let randomColor=()=>{
+  let hex="0123456789ABCDEF"
+  let color="#"
+  for(let i=0;i<6;i++){
+    color+=hex[Math.floor(Math.random()*16)]
+  }
+  return color
+}
+let change
+
+document.querySelector('#start').addEventListener('click',()=>{
+
+  if(!change){
+    let startChange=function(){
+      document.body.style.backgroundColor=randomColor();
+    }
+    change=setInterval(startChange,1000)
+  
+  }
+  
+})
+document.querySelector('#stop').addEventListener('click',()=>{
+  clearInterval(change);
+  change=null;
+  // document.body.style.backgroundColor="#212121"
+})
+ 
+
+```
