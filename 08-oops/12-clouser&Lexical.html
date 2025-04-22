@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clouser&lexical scoping</title>
+</head>
+<body>
+    <button id="yellow">yellow</button>
+    <button id="grey">grey</button>
+    
+</body>
+<script>
+    function colorChange(color){
+
+        return function(){
+            document.body.style.backgroundColor=`${color}`
+        }
+    }
+
+    document.querySelector('#yellow').onclick=colorChange('yellow');
+    document.querySelector('#grey').onclick=colorChange('grey');
+
+
+</script>
+</html>
